@@ -1,0 +1,16 @@
+LAB - 1
+1. Exploring the ChatGPT Interface
+
+ChatGPT, developed by OpenAI, provides a clean and interactive interface for users to communicate with an advanced AI model. The interface includes a chat box, response area, sidebar for saved chats, and options to upload files or choose different AI models. I experimented with various prompts, such as questions, commands, and code requests. It allows for structured outputs (tables, JSON), context-aware answers, and tone modifications. The simplicity and responsiveness of the interface make it accessible for tasks ranging from casual conversations to technical problem-solving.
+
+2. Studying Transformer Architecture
+
+The core technology behind ChatGPT is the transformer architecture, introduced by Vaswani et al. It utilizes a mechanism called self-attention, which helps the model understand relationships between words in a sentence, regardless of order. I studied this using visual tools such as The Illustrated Transformer and Hugging Face’s attention viewer. Concepts like multi-head attention, positional encoding, and encoder-decoder blocks were clearly demonstrated. These visuals helped me understand how ChatGPT processes and generates human-like text with high accuracy and context awareness.
+
+3. Real-World Applications of ChatGPT
+
+ChatGPT has powerful applications across various sectors:
+    Education: Generating quizzes, summarizing notes, explaining complex concepts in simple terms.
+    Healthcare: Simulating a medical assistant chatbot, summarizing patient records or articles.
+    Business: Writing professional emails, generating business reports, drafting marketing content.
+    Creativity: Writing poetry, stories, social media captions, and brainstorming content ideas.

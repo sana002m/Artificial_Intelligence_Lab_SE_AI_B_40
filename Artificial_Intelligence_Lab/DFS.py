@@ -1,40 +1,42 @@
-def dfs(maze, start, end):
-    stack = [start] # Initialize stack with start position
-    visited = set() # Track visited positions
+from collections import deque
 
-    while stack:
-        position = stack.pop() # Get current position
-        x, y = position
+def bfs(maze, start, end):
+    # Directions: up, right, down, left
+    directions = [(-1, 0), (0, 1), (1, 0), (0, -1)]
+    queue = deque([start])  # Queue for BFS
+    visited = set(start)    # Keep track of visited cells
 
-        # Check if we've reached the end
-        if position == end:
-            return True
+    while queue:
+        current = queue.popleft()
+        if current == end:
+            return True  # Path found to exit
 
-        # Mark the current cell as visited
-        visited.add((x, y))
+        for direction in directions:
+            # Calculate the next cell's position
+            next_cell = (current[0] + direction[0], current[1] + direction[1])
 
-        # Explore neighbors (up, down, left, right)
-        for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-            new_x, new_y = x + dx, y + dy
+            # Check if the next cell is within the maze and not a wall
+            if (0 <= next_cell[0] < len(maze) and
+                    0 <= next_cell[1] < len(maze[0]) and
+                    maze[next_cell[0]][next_cell[1]] != '#' and
+                    next_cell not in visited):
+                queue.append(next_cell)
+                visited.add(next_cell)
 
-            # Check bounds and if the cell is already visited or is a wall
-            if (0 <= new_x < len(maze) and 0 <= new_y < len(maze[0]) and
-                    maze[new_x][new_y] == 0 and (new_x, new_y) not in visited):
-                stack.append((new_x, new_y))
+    return False  # No path found
 
-    return False # Return False if no path is found
-
-# Example maze: 0 -> open path, 1 -> wall
+# Example maze where '#' is a wall, 'S' is start, and 'E' is end
 maze = [
-    [0, 1, 0, 0, 0],
-    [0, 1, 0, 1, 0],
-    [0, 0, 0, 1, 0],
-    [1, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0]
+    ['S', '.', '.', '#', '.', '.', '.'],
+    ['.', '#', '.', '#', '.', '#', '.'],
+    ['.', '#', '.', '.', '.', '.', '.'],
+    ['.', '.', '#', '#', '#', '.', '.'],
+    ['.', '#', '.', '.', '.', '#', '.'],
+    ['.', '#', '#', '#', '.', '#', '.'],
+    ['.', '.', '.', '.', '.', '.', 'E'],
 ]
 
-# Start and end positions
-start = (0, 0)
+start = (0, 0)  # Starting position
 end = (4, 4)
 
 # Solve the maze

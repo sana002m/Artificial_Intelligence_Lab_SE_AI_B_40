@@ -1,13 +1,13 @@
 from collections import deque
 
-def bfs(maze, start, end):
+def dfs(maze, start, end):
     # Directions: up, right, down, left
     directions = [(-1, 0), (0, 1), (1, 0), (0, -1)]
-    queue = deque([start])  # Queue for BFS
+    stack = ([start])  
     visited = set(start)    # Keep track of visited cells
 
-    while queue:
-        current = queue.popleft()
+    while stack:
+        current = sack.pop()
         if current == end:
             return True  # Path found to exit
 
@@ -20,7 +20,7 @@ def bfs(maze, start, end):
                     0 <= next_cell[1] < len(maze[0]) and
                     maze[next_cell[0]][next_cell[1]] != '#' and
                     next_cell not in visited):
-                queue.append(next_cell)
+                stack.append(next_cell)
                 visited.add(next_cell)
 
     return False  # No path found
